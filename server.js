@@ -25,7 +25,7 @@ app.use(express.urlencoded({
 //middleware
 
 app.use(express.json())
-app.use(express.static('public'));
+
 
 app.post('/sendMail', (req, res) => {
 
@@ -69,7 +69,7 @@ transporter.sendMail(mailOptions, (error, info) => {
 
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+    res.send('greybeing-API');
 });
 
 app.listen(PORT, () => console.log(`server is running on Port ${PORT}`))
