@@ -1,38 +1,41 @@
-const contactForm = document.querySelector('#contactForm');
+// const contactForm = document.querySelector('#contactForm');
 
-let contactName = document.getElementById('contactName');
-let email = document.getElementById('contactEmail');
-let subject = document.getElementById('contactSubject');
-let message = document.getElementById('contactMessage');
+// let Name = document.getElementById('contactName');
+// let Email = document.getElementById('contactEmail');
+// let Subject = document.getElementById('contactSubject');
+// let Message = document.getElementById('contactMessage');
 
 
-contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
+// contactForm.addEventListener('submit', (e) => {
+//     e.preventDefault();
 
-    let formData = {
-        contactName: contactName.value,
-        email: email.value,
-        subject: subject.value,
-        message: message.value
-    }
+//     let formData = {
+//         Name: Name.value,
+//         Email: Email.value,
+//         Subject: Subject.value,
+//         Message: Message.value
+//     }
     
-    let xhr = new XMLHttpRequest();
-    xhr.open('POST', '/');
-    xhr.setRequestHeader('content-type','application/json');
-    xhr.onload = function() {
-        if(xhr.responseText == 'success') {
-            console.log(xhr.responseText);
-            alert('Email successfully sent');
-            contactName.value = '';
-            email.value = '';
-            subject.value = '';
-            message.value = '';
-        }else{
-            alert('oops! something went wrong')
-        }
-    }
+//     let xhr = new XMLHttpRequest();
+//     xhr.open('POST', '/');
+//     xhr.setRequestHeader('content-type','application/json');
+//     xhr.onload = function() {
+//         if(xhr.responseText == 'success') {
+//             console.log(xhr.responseText);
+//             alert('Email successfully sent');
+//             Name.value = '';
+//             Email.value = '';
+//             Subject.value = '';
+//             Message.value = '';
+//         }else{
+//             alert('oops! something went wrong')
+//         }
+//     }
 
-    xhr.send(JSON.stringify(formData));
+//     xhr.send(JSON.stringify(formData));
 
 
-    })
+//     })
+
+
+

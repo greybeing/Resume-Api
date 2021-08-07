@@ -3,19 +3,31 @@ const app = express();
 const PORT = process.env.PORT || 3500;
 const path = require('path');
 const nodemailer = require('nodemailer');
+
+
+
 var dotenv = require("dotenv");
 dotenv.config();
+
+// CORS
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "http://127.0.0.1:5500");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
 
 // Data parsing
 app.use(express.urlencoded({
     extended: false
 }));
 
+
 //middleware
+
 app.use(express.json())
 app.use(express.static('public'));
 
-app.post('/', (req, res) => {
+app.post('/sendMail', (req, res) => {
 
     //send email
     console.log(req.body)
@@ -32,7 +44,7 @@ app.post('/', (req, res) => {
     });
 
 const mailOptions = {
-    from: req.body.email,
+    from: req.body.contactName,
     to: process.env.USER,
     subject: `Message from ${req.body.email}: ${req.body.subject}`,
     text: req.body.message
@@ -49,6 +61,12 @@ transporter.sendMail(mailOptions, (error, info) => {
 })
     
 });
+// homepage route 
+// app.use('/Home', (req, res) => {
+//      res.sendFile(path.join(__dirname, 'public', 'index.html'));
+// })
+
+
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
