@@ -8,7 +8,7 @@
     "start": "node server.js"
   },
   "author": "@grey_being",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "body-parser": "^1.19.0",
     "dotenv": "^10.0.0",

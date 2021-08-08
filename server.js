@@ -1,11 +1,6 @@
 const express = require('express');
 const app = express();
-const PORT = process.env.PORT || 3500;
-const path = require('path');
 const nodemailer = require('nodemailer');
-
-
-
 var dotenv = require("dotenv");
 dotenv.config();
 
@@ -23,14 +18,12 @@ app.use(express.urlencoded({
 
 
 //middleware
-
 app.use(express.json())
 
 
 app.post('/sendMail', (req, res) => {
-
-    //send email
     console.log(req.body)
+    //send email
     const transporter = nodemailer.createTransport({
         host: 'smtp.gmail.com',
         service: 'gmail',
@@ -58,18 +51,12 @@ transporter.sendMail(mailOptions, (error, info) => {
         console.log('Email sent: ' + info.response);
         res.send('success')
     }
-})
-    
+ })
 });
-// homepage route 
-// app.use('/Home', (req, res) => {
-//      res.sendFile(path.join(__dirname, 'public', 'index.html'));
-// })
-
 
 
 app.get('/', (req, res) => {
     res.send('greybeing-API');
 });
 
-app.listen(PORT, () => console.log(`server is running on Port ${PORT}`))
+app.listen(process.env.PORT, () => console.log(`server is running on Port ${process.env.PORT}`))
