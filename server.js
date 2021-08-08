@@ -3,13 +3,21 @@ const app = express();
 const nodemailer = require('nodemailer');
 var dotenv = require("dotenv");
 dotenv.config();
+var cors = require('cors');
+
 
 // CORS
 app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "https://www.greybeing.com");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
   });
+
+  var corsOptions = {
+    origin: ["https://greybeing.azureedge.net","https://www.greybeing.com","http://127.0.0.1:5500"],
+    optionsSuccessStatus: 200 // For legacy browser support
+    }
+    
+    app.use(cors(corsOptions)); 
 
 // Data parsing
 app.use(express.urlencoded({
