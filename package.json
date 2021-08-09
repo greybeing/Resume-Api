@@ -1,13 +1,13 @@
 {
   "name": "resume-server",
   "version": "1.0.0",
-  "description": "Portfolio website server",
+  "description": "My resume website server",
   "main": "server.js",
   "scripts": {
-    "dev": "nodemon server.js",
+    "dev": "nodemon",
     "start": "node server.js"
   },
-  "author": "@grey_being",
+  "author": "Oluwagbenga",
   "license": "MIT",
   "dependencies": {
     "body-parser": "^1.19.0",

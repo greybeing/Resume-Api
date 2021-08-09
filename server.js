@@ -1,9 +1,9 @@
 const express = require('express');
 const app = express();
 const nodemailer = require('nodemailer');
-var dotenv = require("dotenv");
+const dotenv = require("dotenv");
 dotenv.config();
-var cors = require('cors');
+const cors = require('cors');
 
 
 // CORS
@@ -12,26 +12,23 @@ app.use(function(req, res, next) {
     next();
   });
 
-  var corsOptions = {
-    origin: ["https://greybeing.azureedge.net","https://www.greybeing.com","http://127.0.0.1:5500"],
+var corsOptions = {
+    origin: [process.env.ADDRESS1,process.env.ADDRESS2,process.env.ADDRESS3],
     optionsSuccessStatus: 200 // For legacy browser support
-    }
-    
-    app.use(cors(corsOptions)); 
+}
+app.use(cors(corsOptions)); 
 
 // Data parsing
 app.use(express.urlencoded({
     extended: false
 }));
 
-
 //middleware
 app.use(express.json())
 
-
+//send email
 app.post('/sendMail', (req, res) => {
     console.log(req.body)
-    //send email
     const transporter = nodemailer.createTransport({
         host: 'smtp.gmail.com',
         service: 'gmail',
@@ -62,7 +59,7 @@ transporter.sendMail(mailOptions, (error, info) => {
  })
 });
 
-
+//Api homepage
 app.get('/', (req, res) => {
     res.send('greybeing-API');
 });
