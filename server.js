@@ -13,7 +13,8 @@ app.use(function(req, res, next) {
   });
 
 var corsOptions = {
-    origin: [process.env.ADDRESS1,process.env.ADDRESS2,process.env.ADDRESS3,process.env.ADDRESS4],
+    origin: [process.env.ADDRESS1,process.env.ADDRESS2,process.env.ADDRESS3,
+             process.env.ADDRESS4,process.env.ADDRESS5,process.env.ADDRESS6],
     optionsSuccessStatus: 200 // For legacy browser support
 }
 app.use(cors(corsOptions)); 
